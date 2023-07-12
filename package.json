@@ -4,16 +4,17 @@
     "description": "Bot para publicar confesiones en Twitter",
     "main": "bot.js",
     "scripts": {
-        "start": "node bot.js",
-        "build": "webpack --config webpack.config.js"
+      "start": "node bot.js",
+      "build": "webpack --config webpack.config.js"
     },
     "dependencies": {
-        "express": "^4.17.1",
-        "twit": "^2.2.11"
+      "express": "^4.17.1",
+      "twit": "^2.2.11"
+    },
+    "devDependencies": {
+      "webpack-cli": "^4.9.0"
     },
     "author": "Tu Nombre",
-    "license": "ISC",
-    "devDependencies": {
-        "webpack-cli": "^5.1.4"
-    }
-}
+    "license": "ISC"
+  }
+  
