@@ -1,11 +1,10 @@
 const express = require('express');
-const path = require('path');
 const Twit = require('twit');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Configurar las nuevas credenciales de Twitter
+// Configurar las credenciales de Twitter
 const twitterConfig = {
   consumer_key: 'G1EPlxlSNcpquvAIPH9A8jxX0',
   consumer_secret: 'RRcPIE28z4wiX00SGVeVg02DEVvmC02STCF1lmvr7MDNFdV9FP',
@@ -15,11 +14,6 @@ const twitterConfig = {
 
 // Crear una instancia de Twit
 const T = new Twit(twitterConfig);
-
-// Ruta raíz para cargar el archivo HTML
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
 
 // Ruta para recibir confesiones
 app.post('/confessions', (req, res) => {
