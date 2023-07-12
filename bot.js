@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const Twit = require('twit');
 
 const app = express();
@@ -17,6 +18,11 @@ const T = new Twit(twitterConfig);
 
 // Middleware para analizar el cuerpo de la solicitud como JSON
 app.use(express.json());
+
+// Ruta para servir el archivo HTML de la página de confesiones
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // Ruta para recibir confesiones
 app.post('/confessions', (req, res) => {
