@@ -6,7 +6,8 @@
   <body>
     <h1>Confiesa tus secretos</h1>
     <form action="/confessions" method="POST">
-      <textarea name="text" placeholder="Escribe tu confesión aquí"></textarea>
+      <label for="confession">Confesión:</label>
+      <textarea id="confession" name="text" placeholder="Escribe tu confesión aquí" required></textarea>
       <button type="submit">Enviar</button>
     </form>
   </body>

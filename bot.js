@@ -20,9 +20,6 @@ app.use(express.json());
 
 // Ruta para recibir confesiones
 app.post('/confessions', (req, res) => {
-  // Aquí puedes procesar la confesión recibida y publicarla en Twitter usando la instancia de Twit (T)
-  // Puedes acceder a los datos de la confesión a través de req.body
-
   // Verificar si existe el campo "text" en el cuerpo de la solicitud
   if (req.body && req.body.text) {
     // Obtener el texto de la confesión
@@ -42,25 +39,6 @@ app.post('/confessions', (req, res) => {
     // Si el campo "text" no está presente en el cuerpo de la solicitud
     res.status(400).json({ error: 'Falta el campo "text" en la confesión' });
   }
-});
-
-// Ruta para la página de confesiones
-app.get('/', (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Página de Confesiones</title>
-      </head>
-      <body>
-        <h1>Confiesa tus secretos</h1>
-        <form action="/confessions" method="POST">
-          <textarea name="text" placeholder="Escribe tu confesión aquí"></textarea>
-          <button type="submit">Enviar</button>
-        </form>
-      </body>
-    </html>
-  `);
 });
 
 app.listen(port, () => {
