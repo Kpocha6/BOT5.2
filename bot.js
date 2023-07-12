@@ -15,35 +15,31 @@ const twitterConfig = {
 // Crear una instancia de Twit
 const T = new Twit(twitterConfig);
 
-// Middleware para procesar datos en formato JSON
+// Middleware para analizar el cuerpo de la solicitud como JSON
 app.use(express.json());
 
 // Ruta para recibir confesiones
 app.post('/confessions', (req, res) => {
-  const confessionText = req.body.text;
-
-  if (!confessionText) {
+  // Verificar si el campo "text" está presente en la confesión
+  if (!req.body.text) {
     return res.status(400).json({ error: 'Falta el campo "text" en la confesión' });
   }
+
+  // Obtener el texto de la confesión
+  const confessionText = req.body.text;
 
   // Publicar la confesión en Twitter
   T.post('statuses/update', { status: confessionText }, (err, data, response) => {
     if (err) {
       console.error('Error al publicar la confesión en Twitter:', err);
-      return res.status(500).json({ error: 'Error al publicar la confesión en Twitter' });
+      res.status(500).json({ error: 'Error al publicar la confesión en Twitter' });
+    } else {
+      console.log('Confesión publicada en Twitter:', data);
+      res.status(200).json({ message: 'Confesión publicada en Twitter' });
     }
-
-    console.log('Confesión publicada en Twitter:', data);
-    res.status(200).json({ message: 'Confesión publicada en Twitter' });
   });
 });
 
-// Ruta para servir el archivo HTML
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
-
-// Iniciar el servidor
 app.listen(port, () => {
   console.log(`Servidor web iniciado en el puerto ${port}`);
 });
