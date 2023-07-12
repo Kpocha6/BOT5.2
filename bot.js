@@ -44,6 +44,25 @@ app.post('/confessions', (req, res) => {
   }
 });
 
+// Ruta para la página de confesiones
+app.get('/', (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Página de Confesiones</title>
+      </head>
+      <body>
+        <h1>Confiesa tus secretos</h1>
+        <form action="/confessions" method="POST">
+          <textarea name="text" placeholder="Escribe tu confesión aquí"></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      </body>
+    </html>
+  `);
+});
+
 app.listen(port, () => {
   console.log(`Servidor web iniciado en el puerto ${port}`);
 });
