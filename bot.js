@@ -1,4 +1,3 @@
-const path = require('path');
 const express = require('express');
 const Twit = require('twit');
 
@@ -16,30 +15,33 @@ const twitterConfig = {
 // Crear una instancia de Twit
 const T = new Twit(twitterConfig);
 
-// Configurar el directorio de archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Ruta para la página de inicio
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+// Configurar el middleware para analizar el cuerpo de la solicitud como JSON
+app.use(express.json());
 
 // Ruta para recibir confesiones
 app.post('/confessions', (req, res) => {
   // Aquí puedes procesar la confesión recibida y publicarla en Twitter usando la instancia de Twit (T)
   // Puedes acceder a los datos de la confesión a través de req.body
 
-  // Ejemplo: publicar la confesión en Twitter
-  const confessionText = req.body.text;
-  T.post('statuses/update', { status: confessionText }, (err, data, response) => {
-    if (err) {
-      console.error('Error al publicar la confesión en Twitter:', err);
-      res.status(500).json({ error: 'Error al publicar la confesión en Twitter' });
-    } else {
-      console.log('Confesión publicada en Twitter:', data);
-      res.status(200).json({ message: 'Confesión publicada en Twitter' });
-    }
-  });
+  // Verificar si existe el campo "text" en el cuerpo de la solicitud
+  if (req.body && req.body.text) {
+    // Obtener el texto de la confesión
+    const confessionText = req.body.text;
+
+    // Publicar la confesión en Twitter
+    T.post('statuses/update', { status: confessionText }, (err, data, response) => {
+      if (err) {
+        console.error('Error al publicar la confesión en Twitter:', err);
+        res.status(500).json({ error: 'Error al publicar la confesión en Twitter' });
+      } else {
+        console.log('Confesión publicada en Twitter:', data);
+        res.status(200).json({ message: 'Confesión publicada en Twitter' });
+      }
+    });
+  } else {
+    // Si el campo "text" no está presente en el cuerpo de la solicitud
+    res.status(400).json({ error: 'Falta el campo "text" en la confesión' });
+  }
 });
 
 app.listen(port, () => {
