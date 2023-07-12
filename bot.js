@@ -6,10 +6,10 @@ const port = process.env.PORT || 3000;
 
 // Configurar las credenciales de Twitter
 const twitterConfig = {
-  consumer_key: 'NDAxMnlvc0VjYzFxOWhmb09zR0o6MTpjaQ',
-  consumer_secret: 'MLhLQADS7ZARsnz5cuBLpLzg3cgEWzJ43uawaFo3g1m3RDnBgn',
-  access_token: '1678888146069512193-q8QIJcQFdluk6tQRTTPp7hgGwWQEWC',
-  access_token_secret: 'xytFxJQAKrFXbLkOOHO8M5I0F24GO5gkt39yFPAtVeceJ',
+  consumer_key: 'G1EPlxlSNcpquvAIPH9A8jxX0',
+  consumer_secret: 'RRcPIE28z4wiX00SGVeVg02DEVvmC02STCF1lmvr7MDNFdV9FP',
+  access_token: '1678888146069512193-86sGsp9ylbZewffV3XQEYuTJtSt9aW',
+  access_token_secret: 'aDnY27fEsck8gcp5kavp8ixTtftOUsmAkX8wX6ar1Vcbj',
 };
 
 // Crear una instancia de Twit
