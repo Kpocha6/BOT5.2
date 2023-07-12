@@ -6,8 +6,8 @@ const port = process.env.PORT || 3000;
 
 // Configurar las credenciales de Twitter
 const twitterConfig = {
-  consumer_key: 'YOmQeIlMvyxYj8S3geTaKrq9H',
-  consumer_secret: 'uyR5zWA0pRBDwLblzABuIJr9BeeVKwUFTwY4ESevMXtYqbtKqS',
+  consumer_key: 'NDAxMnlvc0VjYzFxOWhmb09zR0o6MTpjaQ',
+  consumer_secret: 'MLhLQADS7ZARsnz5cuBLpLzg3cgEWzJ43uawaFo3g1m3RDnBgn',
   access_token: '1678888146069512193-q8QIJcQFdluk6tQRTTPp7hgGwWQEWC',
   access_token_secret: 'xytFxJQAKrFXbLkOOHO8M5I0F24GO5gkt39yFPAtVeceJ',
 };
