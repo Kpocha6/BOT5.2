@@ -15,9 +15,26 @@ const twitterConfig = {
 // Crear una instancia de Twit
 const T = new Twit(twitterConfig);
 
-// Ruta principal
+app.use(express.urlencoded({ extended: true }));
+
+// Ruta para la página principal
 app.get('/', (req, res) => {
-  res.send('¡Bienvenido a la página de confesiones!');
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Página de Confesiones</title>
+      </head>
+      <body>
+        <h1>¡Bienvenido a la página de confesiones!</h1>
+        <form action="/confessions" method="POST">
+          <textarea name="text" placeholder="Escribe tu confesión aquí"></textarea>
+          <br />
+          <button type="submit">Enviar</button>
+        </form>
+      </body>
+    </html>
+  `);
 });
 
 // Ruta para recibir confesiones
