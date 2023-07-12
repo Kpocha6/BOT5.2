@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 // Ruta para recibir confesiones
 app.post('/confessions', (req, res) => {
   // Verificar si el campo "text" está presente en la confesión
-  if (!req.body.text) {
+  if (!req.body || !req.body.text) {
     return res.status(400).json({ error: 'Falta el campo "text" en la confesión' });
   }
 
