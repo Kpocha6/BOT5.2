@@ -15,10 +15,6 @@ const twitterConfig = {
 // Crear una instancia de Twit
 const T = new Twit(twitterConfig);
 
-// Configurar el middleware para analizar los datos del cuerpo de la solicitud
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
 // Ruta para recibir confesiones
 app.post('/confessions', (req, res) => {
   // Aquí puedes procesar la confesión recibida y publicarla en Twitter usando la instancia de Twit (T)
@@ -35,17 +31,6 @@ app.post('/confessions', (req, res) => {
       res.status(200).json({ message: 'Confesión publicada en Twitter' });
     }
   });
-});
-
-// Ruta predeterminada para la página de inicio
-app.get('/', (req, res) => {
-  res.send(`
-    <h1>¡Bienvenido a la página de confesiones!</h1>
-    <form action="/confessions" method="POST">
-      <textarea name="text" placeholder="Escribe tu confesión aquí"></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  `);
 });
 
 app.listen(port, () => {
