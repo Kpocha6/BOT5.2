@@ -15,6 +15,11 @@ const twitterConfig = {
 // Crear una instancia de Twit
 const T = new Twit(twitterConfig);
 
+// Ruta principal
+app.get('/', (req, res) => {
+  res.send('¡Bienvenido a la página de confesiones!');
+});
+
 // Ruta para recibir confesiones
 app.post('/confessions', (req, res) => {
   // Aquí puedes procesar la confesión recibida y publicarla en Twitter usando la instancia de Twit (T)
