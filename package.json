@@ -5,7 +5,7 @@
     "main": "bot.js",
     "scripts": {
       "start": "node bot.js",
-      "build": "..."
+      "build": "webpack --config webpack.config.js"
     },
     "dependencies": {
       "express": "^4.17.1",
