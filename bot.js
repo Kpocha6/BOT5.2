@@ -19,10 +19,8 @@ const T = new Twit(twitterConfig);
 // Middleware para analizar el cuerpo de la solicitud como JSON
 app.use(express.json());
 
-// Ruta para servir el archivo HTML de la página de confesiones
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+// Ruta para servir los archivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta para recibir confesiones
 app.post('/confessions', (req, res) => {
