@@ -4,7 +4,8 @@
     "description": "Bot para publicar confesiones en Twitter",
     "main": "bot.js",
     "scripts": {
-      "start": "node bot.js"
+      "start": "node bot.js",
+      "build": "..."
     },
     "dependencies": {
       "express": "^4.17.1",
