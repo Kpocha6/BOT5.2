@@ -6,36 +6,18 @@ const port = process.env.PORT || 3000;
 
 // Configurar las credenciales de Twitter
 const twitterConfig = {
-  consumer_key: '0ulEcdkRJa9JyP1wUXdLg0G92',
-  consumer_secret: 'h5hLQuc4HMEP6EW1rusGCnf8pgrcrpibrbExjeMLS6npWeji0y',
-  access_token: '1678888146069512193-bDA0Puqxc2wuxIMHDDrzxrHEfZG6X7',
-  access_token_secret: 'zWJ1rezfKtUFPJdDarqCpnUFuxbJeUyTStliAnl3VcPTY',
+  consumer_key: 'YOmQeIlMvyxYj8S3geTaKrq9H',
+  consumer_secret: 'uyR5zWA0pRBDwLblzABuIJr9BeeVKwUFTwY4ESevMXtYqbtKqS',
+  access_token: '1678888146069512193-q8QIJcQFdluk6tQRTTPp7hgGwWQEWC',
+  access_token_secret: 'xytFxJQAKrFXbLkOOHO8M5I0F24GO5gkt39yFPAtVeceJ',
 };
 
 // Crear una instancia de Twit
 const T = new Twit(twitterConfig);
 
+// Configurar el middleware para analizar los datos del cuerpo de la solicitud
 app.use(express.urlencoded({ extended: true }));
-
-// Ruta para la página principal
-app.get('/', (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Página de Confesiones</title>
-      </head>
-      <body>
-        <h1>¡Bienvenido a la página de confesiones!</h1>
-        <form action="/confessions" method="POST">
-          <textarea name="text" placeholder="Escribe tu confesión aquí"></textarea>
-          <br />
-          <button type="submit">Enviar</button>
-        </form>
-      </body>
-    </html>
-  `);
-});
+app.use(express.json());
 
 // Ruta para recibir confesiones
 app.post('/confessions', (req, res) => {
@@ -53,6 +35,17 @@ app.post('/confessions', (req, res) => {
       res.status(200).json({ message: 'Confesión publicada en Twitter' });
     }
   });
+});
+
+// Ruta predeterminada para la página de inicio
+app.get('/', (req, res) => {
+  res.send(`
+    <h1>¡Bienvenido a la página de confesiones!</h1>
+    <form action="/confessions" method="POST">
+      <textarea name="text" placeholder="Escribe tu confesión aquí"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  `);
 });
 
 app.listen(port, () => {
