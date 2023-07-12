@@ -1,0 +1,16 @@
+{
+    "name": "bot-confesiones",
+    "version": "1.0.0",
+    "description": "Bot para publicar confesiones en Twitter",
+    "main": "bot.js",
+    "scripts": {
+      "start": "node bot.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "twit": "^2.2.11"
+    },
+    "author": "Tu Nombre",
+    "license": "ISC"
+  }
+  
