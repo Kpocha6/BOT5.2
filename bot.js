@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const Twit = require('twit');
 
@@ -14,6 +15,14 @@ const twitterConfig = {
 
 // Crear una instancia de Twit
 const T = new Twit(twitterConfig);
+
+// Configurar el directorio de archivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Ruta para la página de inicio
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // Ruta para recibir confesiones
 app.post('/confessions', (req, res) => {
